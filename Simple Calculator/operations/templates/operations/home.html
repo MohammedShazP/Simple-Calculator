@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+  </head>
+  <style>
+    table {
+      width: 30%;
+    }
+    th {
+      height: 30px;
+      width: 100%;
+      font-size: 25px;
+      background-color: #b2b2b2;
+    }
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+    }
+    table,
+    th,
+    td {
+      border: 2px solid;
+      border-radius: 3px;
+    }
+    td {
+      background-color: #bfbfbf;
+    }
+    input[type="text"] {
+      width: 100%;
+      border: 2px solid;
+      border-radius: 5px;
+      background-color: #c0c5b7;
+      height: 20px;
+    }
+
+    select {
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      font-size: 15px;
+      background-color: #898989;
+      color: #fcfafa;
+    }
+    input[type="submit"] {
+      text-align: center;
+      background-color: #898989;
+      width: 100%;
+      font-size: 15px;
+      color: #fcfafa;
+      height: 30px;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <table align="center">
+      <tr>
+        <th colspan="2">Simple Calculator</th>
+      </tr>
+
+      <form action="" method="POST" onsubmit="return validate()">
+        {% csrf_token %}
+        <tr>
+          <td>
+            <label for="">Enter number 1</label>
+          </td>
+          <td>
+            <input type="text" name="num1" id="num1" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Enter number 2</label>
+          </td>
+          <td>
+            <input type="text" name="num2" required id="num2"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Enter number 3</label>
+          </td>
+          <td>
+            <input type="text" name="num3" id="num3"/>
+          </td>
+        </tr>
+        <td>
+          <label for="">Enter number 4</label>
+        </td>
+        <td>
+          <input type="text" name="num4" id="num4"/>
+        </td>
+        <tr>
+          <td>
+            <select id="" name="operator">
+              <option value="addition">Add</option>
+              <option value="subtraction">Sub</option>
+              <option value="multiplication">Multiply</option>
+              <option value="division">Divide</option>
+            </select>
+          </td>
+          <td>
+            <input type="submit" value="SUBMIT" />
+          </td>
+        </tr>
+      </form>
+    </table>
+
+    <script>
+      const regex_alphabets = /[A-Za-z]/;
+      function validate() {
+        var num1 = document.getElementById("num1");
+        var num2 = document.getElementById("num2");
+        var num3 = document.getElementById("num3");
+        var num4 = document.getElementById("num4");
+        if (regex_alphabets.test(num1.value) || regex_alphabets.test(num2.value) || regex_alphabets.test(num3.value)||regex_alphabets.test(num4.value)) {
+          alert("Input should be numbers.");
+          return false;
+        } else {
+          return true;
+        }
+      }
+    </script>
+  </body>
+</html>
